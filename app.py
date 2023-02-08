@@ -14,6 +14,7 @@ uploaded_file = st.file_uploader("리플렛 파일을 업로드해주세요", ty
 
 if uploaded_file:
     img = Image.open(uploaded_file)
+    img = img.convert("RGB")
 
     basewidth = 800
     wpercent = (basewidth/float(img.size[0]))
