@@ -1,0 +1,50 @@
+from PIL import Image
+import io
+import streamlit as st
+import streamlit_ext as ste
+
+
+st.header("이미지 사이즈 변환기")
+st.subheader("이미지가 최대 70kb를 초과하지 않도록 조절해드려요")
+
+
+
+uploaded_file = st.file_uploader("리플렛 파일을 업로드해주세요", type=['png','jpg','jpeg'])
+
+
+if uploaded_file:
+    img = Image.open(uploaded_file)
+
+    basewidth = 800
+    wpercent = (basewidth/float(img.size[0]))
+    hsize = int((float(img.size[1])*float(wpercent)))
+    img = img.resize((basewidth,hsize), Image.Resampling.LANCZOS)
+
+    out = io.BytesIO()
+    img.save(out, format='jpeg', quality=100)
+    out.tell()/1024
+
+    quality = 100
+    output_size = 100
+
+    while output_size>=70:
+        quality = quality-1
+    #     print("시작", quality)
+        out = io.BytesIO()
+        img.save(out, format='jpeg', quality=quality)
+        output_size = out.tell()/1024
+        print(output_size,quality)
+
+
+    img.save('temp800.jpg', format='jpeg', quality=quality)
+
+
+    with open("temp800.jpg", "rb") as file:
+        btn = ste.download_button(
+                label="이미지다운로드를 하려면 이곳을 클릭",
+                data=file,
+                file_name="temp800.jpg",
+                mime="image/jpg"
+            )
+
+    st.image(img)
