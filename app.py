@@ -33,10 +33,12 @@ if uploaded_file:
         out = io.BytesIO()
         img.save(out, format='jpeg', quality=quality)
         output_size = out.tell()/1024
-        print(output_size,quality)
+        # print(output_size,quality)
 
 
     img.save('temp800.jpg', format='jpeg', quality=quality)
+
+    st.write(output_size)
 
 
     with open("temp800.jpg", "rb") as file:
