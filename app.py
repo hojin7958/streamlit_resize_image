@@ -3,10 +3,12 @@ import io
 import streamlit as st
 import streamlit_ext as ste
 
+st.set_page_config(page_title="MMS발송용 이미지 사이즈 품질 변환기")
+
 
 st.header("이미지 사이즈 변환기")
 st.subheader("이미지가 최대 70kb를 초과하지 않도록 조절해드려요")
-
+st.write("이미지 가로사이즈 800px로 고정한뒤 70Kb에 맞추도록 이미지 품질을 조정합니다")
 
 
 uploaded_file = st.file_uploader("리플렛 파일을 업로드해주세요", type=['png','jpg','jpeg'])
