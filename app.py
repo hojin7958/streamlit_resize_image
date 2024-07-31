@@ -6,20 +6,24 @@ import streamlit_ext as ste
 st.set_page_config(page_title="MMS발송용 이미지 사이즈 품질 변환기")
 
 
-st.header("이미지 사이즈 변환기 (24.7월까지만 운영)")
+st.header("이미지 사이즈 변환기")
 st.subheader("이미지가 최대 70kb를 초과하지 않도록 조절해드려요")
 st.write("이미지 가로사이즈 800px로 고정한뒤 70Kb에 맞추도록 이미지 품질을 조정합니다")
 
-st.warning("""
-           24.8월부터 이미지 변환기 사이트 주소를 변경해요  
-           
-           https://bohumin.co.kr/tools/resize70
+st.info("""
+        설계매니저 이력서 작성할땐?  
+        온라인 이력서 작성기    
+        https://resume.managerjob.co.kr          
            """)
+
+
 
 st.info("""
         가족간병, 간병인신청할때에는 심플케어  
         https://simplecare.kr        
            """)
+
+st.image("Img/simplecare_intro.jpg")
 
 
 st.write("")
